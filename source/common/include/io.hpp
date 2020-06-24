@@ -7,12 +7,17 @@
 #include <deque>
 #include <string>
 
-std::vector<std::vector<int>> readFile(std::string filename);
-template<class Container>
-void printToConsole(const Container& container, std::string message);
-void printMessage(std::string message);
-void printTree(const std::vector<std::vector<int>>& tree);
+struct Job {
+	Job(float processTime, int aparitionDay, int finalizationDay) :processTime(processTime), aparitionDay(aparitionDay), finalizationDay(finalizationDay) {}
+	float processTime;
+	int aparitionDay;
+	int finalizationDay;
+};
 
-template<class Container>
-void printValues(const Container& container);
-void printLine(std::string message);
+void printMessage(std::string message);
+void printAdjancyMatrix(const std::vector<std::vector<int>>& matrix);
+std::vector<std::vector<int>> readFile(const std::string& filename);
+void printMaxFlowArcs(const std::vector<std::vector<int>>& matrix, const std::vector<std::vector<int>>& computedMatrix);
+std::vector<Job> readJobsData(std::string filename);
+std::vector<std::vector<int>> processJobsData(std::vector<Job> jobs);
+
